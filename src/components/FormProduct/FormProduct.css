@@ -1,0 +1,40 @@
+.form {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 2rem;
+  flex: 1 0;
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  outline: none;
+  width: 80%;
+  display: block;
+}
+
+div {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+button {
+  border: none;
+  color: rgb(64, 64, 224);
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 85%;
+  margin-right: auto;
+}
+
+button:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,52 @@
+table,
+th,
+td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0px;
+  border-width: 1px 0 0 1px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
+}
+
+th {
+  border-width: 0 1px 1px 0;
+  font-weight: bold;
+  line-height: 24px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding: 10px;
+}
+
+td {
+  border-width: 0 1px 1px 0;
+  padding: 10px;
+}
+
+tr:nth-child(odd) {
+  background: #eee;
+}
+
+h1 {
+  text-align: center;
+}
+
+.bill-action-link {
+  text-decoration: none;
+  color: rgb(64, 64, 224);
+}
+
+.bill-action-link:hover {
+  opacity: 0.8;
+}

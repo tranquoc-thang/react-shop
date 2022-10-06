@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  align-items: center;
+  background-color: rgb(163, 163, 245);
+}
+
+.header-left {
+  margin-bottom: 0;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+}
+
+.header-link {
+  padding: 1rem 2rem;
+  color: black;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.header-link.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.header-link:hover {
+  color: whitesmoke;
+  background-color: rgb(147, 147, 240);
+}
