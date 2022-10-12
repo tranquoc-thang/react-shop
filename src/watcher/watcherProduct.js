@@ -1,4 +1,4 @@
-import { takeLatest, put } from "redux-saga/effects";
+import { takeLatest, put, select } from "redux-saga/effects";
 import * as Actions from "../constant/actionTypes.js";
 
 export function* watcherProduct() {
@@ -10,9 +10,16 @@ export function* watcherProduct() {
 
 function* workerAddProductToReducer(action) {
   try {
+    const products = yield select((state) => state.SanPhamReducer.products);
+    products.unshift({ ...action.data.product, id: products.length + 1 });
+
+    const newState = {
+      products: products,
+    };
+
     yield put({
       type: Actions.UPDATE_ADD_NEW_PRODUCT,
-      action,
+      newState,
     });
   } catch (err) {
     throw new Error(err);

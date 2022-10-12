@@ -10,6 +10,7 @@
   flex-direction: column;
   flex: 1 1;
   margin-bottom: 0;
+  background: linear-gradient(270deg, rgb(163, 163, 245), rgb(58, 58, 233));
 }
 
 .footer div {

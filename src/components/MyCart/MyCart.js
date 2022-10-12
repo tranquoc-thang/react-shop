@@ -19,6 +19,7 @@ export default function MyCart() {
   const [isCheckout, setIsCheckout] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     newProductsCart = [...productsCart];
 
     getInfoProductById();
@@ -27,18 +28,17 @@ export default function MyCart() {
 
   function handleCheckout() {
     dispatch({
-      type: Actions.WATCHER_CREATE_NEW_DON_HANG,
+      type: Actions.WATCHER_UPDATE_CREATE_NEW_DON_HANG,
       data: {
         donhang: {
           beforeTax,
           tax,
           afterTax,
         },
-        dongdonhangs: productsCart,
       },
     });
     dispatch({
-      type: Actions.WATCHER_CREATE_NEW_DONG_DON_HANG,
+      type: Actions.WATCHER_UPDATE_CREATE_NEW_DONG_DON_HANG,
       data: {
         dongdonhangs: productsCart,
         idBill: donhang.length + 1,

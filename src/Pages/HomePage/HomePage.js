@@ -5,7 +5,6 @@ export default function HomePage() {
     <>
       <div className="wrapper">
         <ListProduct></ListProduct>
-        <FormProduct></FormProduct>
       </div>
     </>
   );

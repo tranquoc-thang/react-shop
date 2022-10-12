@@ -1,62 +1,62 @@
 import * as Actions from "../constant/actionTypes.js";
+import tainghe from "../assets/images/tai-nghe-bluetooth.jpg";
+import dongho from "../assets/images/dong-ho-korles.jpg";
+import laptop from "../assets/images/laptop-acer.jpg";
+import dienthoai from "../assets/images/samsung-galaxy.jpg";
+import chuot from "../assets/images/chuot-gaming-asus.jpg";
+import routerwifi from "../assets/images/router-wifi.jpg";
 
 let initialState = {
   products: [
     {
       id: 1,
-      name: "San pham 1",
-      url: "https://picsum.photos/300/150",
-      unitPrice: 12000,
-      tax: 1200,
+      name: "Tai nghe Bluetooth",
+      url: tainghe,
+      unitPrice: 3090000,
+      tax: 30900,
     },
     {
       id: 2,
-      name: "San pham 2",
-      url: "https://picsum.photos/300/150",
-      unitPrice: 433300,
+      name: "Đồng hồ KORLEX",
+      url: dongho,
+      unitPrice: 575000,
       tax: 43330,
     },
     {
       id: 3,
-      name: "San pham 3",
-      url: "https://picsum.photos/300/150",
-      unitPrice: 955000,
-      tax: 95500,
+      name: "Laptop Acer",
+      url: laptop,
+      unitPrice: 20490000,
+      tax: 1255000,
     },
     {
       id: 4,
-      name: "San pham 4",
-      url: "https://picsum.photos/300/150",
+      name: "Điện thoại Samsung",
+      url: dienthoai,
+      unitPrice: 2990000,
+      tax: 200000,
+    },
+    {
+      id: 5,
+      name: "Chuột Gaming Asus",
+      url: chuot,
       unitPrice: 53000,
       tax: 5300,
+    },
+    {
+      id: 6,
+      name: "Router Wifi",
+      url: routerwifi,
+      unitPrice: 1350000,
+      tax: 53000,
     },
   ],
 };
 
-if (localStorage.getItem("sanPhamReducer") === null) {
-  localStorage.setItem("sanPhamReducer", JSON.stringify(initialState));
-} else {
-  console.log(localStorage.getItem("sanPhamReducer"));
-  initialState = JSON.parse(localStorage.getItem("sanPhamReducer"));
-}
-
-console.log(JSON.parse(localStorage.getItem("sanPhamReducer")));
-
 export default function SanPhamReducer(state = initialState, action) {
   switch (action.type) {
     case Actions.UPDATE_ADD_NEW_PRODUCT: {
-      const newState = {
-        products: [
-          ...state.products,
-          {
-            ...action.action.data.product,
-          },
-        ],
-      };
-
-      localStorage.setItem("sanPhamReducer", JSON.stringify(newState));
-
-      return newState;
+      return action.newState;
     }
     default:
       return state;

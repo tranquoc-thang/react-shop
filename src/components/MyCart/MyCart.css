@@ -1,6 +1,5 @@
 .cart {
-  padding: 3rem 1.5rem;
-  width: calc(100% - 3rem);
+  padding: 10rem 1.5rem 3rem;
 }
 
 .cart-product {

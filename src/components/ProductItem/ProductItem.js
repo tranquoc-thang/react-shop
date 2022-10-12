@@ -1,21 +1,55 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Actions from "../../constant/actionTypes.js";
 import "./ProductItem.css";
 
 export default function ProductItem({ product }) {
-  const [quantity, setQuantity] = useState();
-  const cart = useSelector((state) => state.MyCartReducer.cart);
-
+  const [quantity, setQuantity] = useState(1);
+  let cart = useSelector((state) => state.MyCartReducer.cart);
   const dispatch = useDispatch();
   function handleAddToCart() {
+    let newState;
+    try {
+      let quantityAdd = quantity || 1;
+
+      const productAdd = cart.find((p) => {
+        return product.id === p.id;
+      });
+
+      if (productAdd) {
+        cart = cart.filter((product) => product.id !== productAdd.id);
+        newState = {
+          cart: [
+            ...cart,
+            {
+              id: product.id,
+              quantity: productAdd.quantity + quantityAdd,
+              unitPrice: 0,
+              name: "",
+            },
+          ],
+        };
+      } else {
+        newState = {
+          cart: [
+            ...cart,
+            {
+              id: product.id,
+              quantity: quantityAdd,
+              unitPrice: 0,
+              name: "",
+            },
+          ],
+        };
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+
     dispatch({
       type: Actions.UPDATE_ADD_PRODUCT_TO_CART,
       data: {
-        product: {
-          id: product.id,
-          quantity: Number(quantity) ?? 1,
-        },
+        newState,
       },
     });
   }

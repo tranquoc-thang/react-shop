@@ -33,30 +33,10 @@ let initialState = {
   ],
 };
 
-if (localStorage.getItem("donHangReducer") === null) {
-  localStorage.setItem("donHangReducer", JSON.stringify(initialState));
-} else {
-  initialState = JSON.parse(localStorage.getItem("donHangReducer"));
-}
-
 export default function DonHangReducer(state = initialState, action) {
   switch (action.type) {
-    case Actions.CREATE_NEW_DON_HANG: {
-      const index = state.bills.length + 1;
-      const newBills = {
-        bills: [
-          ...state.bills,
-          {
-            ...action.data.donhang,
-            id: index,
-            name: "Don hang " + index,
-          },
-        ],
-      };
-
-      localStorage.setItem("donHangReducer", JSON.stringify(newBills));
-
-      return newBills;
+    case Actions.UPDATE_CREATE_NEW_DON_HANG: {
+      return action.newBills;
     }
     default:
       return state;

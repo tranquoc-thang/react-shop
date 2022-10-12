@@ -37,36 +37,10 @@ let initialState = {
   ],
 };
 
-if (localStorage.getItem("dongDonHangReducer") === null) {
-  localStorage.setItem("dongDonHangReducer", JSON.stringify(initialState));
-} else {
-  initialState = JSON.parse(localStorage.getItem("dongDonHangReducer"));
-}
-
 export default function DongDonHangReducer(state = initialState, action) {
   switch (action.type) {
-    case Actions.CREATE_NEW_DONG_DON_HANG: {
-      const dongDonHang = action.data.dongdonhangs.map((ddh) => {
-        return {
-          idBill: action.data.idBill,
-          idProduct: ddh.id,
-          quantity: ddh.quantity,
-          unitPrice: ddh.unitPrice,
-          beforeTax: Number(ddh.quantity) * Number(ddh.unitPrice),
-          tax: ddh.tax,
-        };
-      });
-
-      localStorage.setItem(
-        "dongDonHangReducer",
-        JSON.stringify({
-          billDetails: [...state.billDetails, ...dongDonHang],
-        })
-      );
-
-      return {
-        billDetails: [...state.billDetails, ...dongDonHang],
-      };
+    case Actions.UPDATE_CREATE_NEW_DONG_DON_HANG: {
+      return action.newState;
     }
     default:
       return state;
