@@ -2,9 +2,39 @@ import "./Header.css";
 import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Header() {
+  const [search, setSearch] = useState("");
+
   let location = useLocation();
   let pathname = location.pathname;
+
+  const searchRef = useRef();
+
+  const products = useSelector((state) => state.SanPhamReducer.products);
+
+  function handleOnClick() {
+    searchRef.current.focus();
+  }
+
+  function handleSearch(e) {
+    setSearch(e.target.value);
+  }
+
+  useEffect(() => {
+    const searchProducts = products.filter((product) =>
+      product.name.includes(search)
+    );
+    window.searchProducts(searchProducts);
+  }, [search]);
+
+  useEffect(() => {
+    setSearch("");
+  }, [location]);
 
   return (
     <>
@@ -14,6 +44,20 @@ export default function Header() {
             <img src={logo} alt="logo" />
           </Link>
         </div>
+        <div className="header-search" onClick={handleOnClick}>
+          <input
+            type="text"
+            placeholder="Type to search..."
+            ref={searchRef}
+            onChange={handleSearch}
+            value={search}
+          />
+          <FontAwesomeIcon
+            className="header-search-icon"
+            icon={faMagnifyingGlass}
+          />
+        </div>
+
         <div className="header-right">
           <Link
             to="/product-add"
